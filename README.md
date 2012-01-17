@@ -84,7 +84,8 @@ The command
 
 	Shard.getClient(key)
 	
-returns a redis client. To save the key with a value:
+returns a redis client that supports all the Redis commands (https://github.com/mranney/node_redis/).
+To save the key with a value:
 
 	Shard.getClient(key).hmset(key,'value');
 	
