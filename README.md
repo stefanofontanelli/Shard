@@ -91,7 +91,7 @@ To save the key with a value:
 	
 To get a hashed key:
 
-	Shard.getClient(key).hgetall(key,callback);
+	Shard.getClient(key).hget(key,callback);
 	
 To know where a key is:
 
