@@ -20,9 +20,7 @@ This will install also Shard-Redis.
 Shard uses integer in base 62 (like url shortener) since Javascript is not able to correctly manage 64-bit integers.
 
 
-The key `2T4QmCrM1a1400` is made up of 5 parts:
-
-`2T4QmC` `rM` `1a` `14` `03`
+The key `2T4QmCrM1a1400` is made up of 5 parts: `2T4QmC` `rM` `1a` `14` `03`
 
 
 `2T4QmC` is the difference between the current timestamp in milliseconds and the starting epoch (by default Jan 1st, 2012). 
