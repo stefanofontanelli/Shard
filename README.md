@@ -10,11 +10,6 @@ http://instagram-engineering.tumblr.com/post/10853187575/sharding-ids-at-instagr
  * re-sharding of the keys
  * key types
  
-## Installation via npm (coming soon)
-	npm install shard
-
-This will install also Shard-Redis.
-
 ## The key format
 
 Shard uses integer in base 62 (like url shortener) since Javascript is not able to correctly manage 64-bit integers.
