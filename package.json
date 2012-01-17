@@ -1,7 +1,7 @@
 {
     "name": "Shard",
     "description": "A shard module for key/value stores.",
-    "version": "0.0.4",
+    "version": "0.1.6",
     "author": "Francesco Sullo <me@sullof.com>",
     "contributors": [],    
     "repository": {
