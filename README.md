@@ -1,6 +1,6 @@
 ## Shard
 
-A module to manage keys along a shard of until 3844 nodes inspired by this Instagram's article:
+A module to manage keys along a shard of up to 3844 nodes inspired by this Instagram article:
 http://instagram-engineering.tumblr.com/post/10853187575/sharding-ids-at-instagram
 
 ## Features
@@ -8,7 +8,7 @@ http://instagram-engineering.tumblr.com/post/10853187575/sharding-ids-at-instagr
  * fixed/special keys
  * generated time sorted keys
  * re-sharding of the keys
- * keytypes
+ * key types
  
 ## Installation via npm (coming soon)
 	npm install shard
@@ -19,11 +19,13 @@ This will install also Shard-Redis.
 
 Shard uses integer in base 62 (like url shortener) since Javascript is not able to correctly manage 64-bit integers.
 
+
 The key `2T4QmCrM1a1400` is made up of 5 parts:
 
 `2T4QmC` `rM` `1a` `14` `03`
 
-`2T4QmC` is difference betwen the current timestamp in milliseconds and the starting epoch (by default Jan 1st, 2012). 
+
+`2T4QmC` is the difference between the current timestamp in milliseconds and the starting epoch (by default Jan 1st, 2012). 
 
 `rM` is a variance on the single shard, managed with a sequence.
 
@@ -31,7 +33,7 @@ The key `2T4QmCrM1a1400` is made up of 5 parts:
 
 `14` is the original shard where is the key.
 
-`03` is the key type. This is important if you need to clean you database for some reason.
+`03` is the key type. This is very useful if you need to fix your database for some reason.
 
 ## Usage
 
@@ -84,6 +86,7 @@ To generate a key:
 		do_something(key);
 	});		
 	
+If you don't explicitly declare a key type Shard assumes that you use a default 00 type.
 The command
 
 	Redis.getClient(key)
@@ -92,11 +95,11 @@ returns a redis client. To save the key with a value:
 
 	Redis.getClient(key).hmset(key,'value');
 	
-To get an hashed key:
+To get a hashed key:
 
 	Redis.getClient(key).hgetall(key,callback);
 	
-To know where is a key:
+To know where a key is:
 
 	Redis.whereIs(key);
 
@@ -104,15 +107,19 @@ To know on what shard you have to put a key after changing the number of nodes:
 
 	Redis.getShard(key,new_shard_size);
 	
-To have the decimal string of a key:
+To get the decimal string of a key:
 
 	Redis.toDecimalString(key);
 	
+To create a fixed key (for example the special keys in the shard-config file):
+
+	Redis.fixedKey(ktype,fixed_shard,some_variant);
+	
 To change the key type, for example to associate a token to a user:
 
-	Redis.changeKeyType(key,Redis.keyTypes.token);
+	Redis.changeKeyType(user_key,Redis.keyTypes.token);
 	
-Attention, this requires that in your shard-config file, you have set a special key for tokens.
+Be careful, this requires that you have set a special key for tokens in your shard-config file.
 
 			
 ## Credits
