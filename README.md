@@ -39,7 +39,7 @@ The key `2T4QmCrM1a1400` is made up of 5 parts:
 
 ### require the module
 
-    var Redis = require('shard-redis').init(shard-config);
+    var Shard = require('shard-redis').init(shard-config);
 
 This is a sample of shard-config file, using 4 local instances of Redis:
 
@@ -82,49 +82,49 @@ This is a sample of shard-config file, using 4 local instances of Redis:
 		
 To generate a key:
 
-	Redis.genKey(Redis.keyTypes["users"],function (key) {
+	Shard.genKey(Shard.keyTypes["users"],function (key) {
 		do_something(key);
 	});		
 	
 If you don't explicitly declare a key type Shard assumes that you use a default 00 type.
 The command
 
-	Redis.getClient(key)
+	Shard.getClient(key)
 	
 returns a redis client. To save the key with a value:
 
-	Redis.getClient(key).hmset(key,'value');
+	Shard.getClient(key).hmset(key,'value');
 	
 To get a hashed key:
 
-	Redis.getClient(key).hgetall(key,callback);
+	Shard.getClient(key).hgetall(key,callback);
 	
 To know where a key is:
 
-	Redis.whereIs(key);
+	Shard.whereIs(key);
 
 To know on what shard you have to put a key after changing the number of nodes:
 
-	Redis.getShard(key,new_shard_size);
+	Shard.getShard(key,new_shard_size);
 	
 To get the decimal string of a key:
 
-	Redis.toDecimalString(key);
+	Shard.toDecimalString(key);
 	
 To create a fixed key (for example the special keys in the shard-config file):
 
-	Redis.fixedKey(ktype,fixed_shard,some_variant);
+	Shard.fixedKey(ktype,fixed_shard,some_variant);
 	
 To change the key type, for example to associate a token to a user:
 
-	Redis.changeKeyType(user_key,Redis.keyTypes.token);
+	Shard.changeKeyType(user_key,Shard.keyTypes.token);
 	
 Be careful, this requires that you have set a special key for tokens in your shard-config file.
 
 			
 ## Credits
 
-O is (c) Francesco Sullo <me@sullof.com>
+Shard is (c) Francesco Sullo <me@sullof.com>
 
 ## License 
 
