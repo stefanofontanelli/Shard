@@ -87,7 +87,7 @@ The command
 returns a redis client that supports all the Redis commands (https://github.com/mranney/node_redis/).
 To save the key with a value:
 
-	Shard.getClient(key).hmset(key,'value');
+	Shard.getClient(key).hset(key,'value');
 	
 To get a hashed key:
 
