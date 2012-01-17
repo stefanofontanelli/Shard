@@ -24,9 +24,13 @@ The key `2T4QmCrM1a1400` is made up of 5 parts:
 `2T4QmC` `rM` `1a` `14` `03`
 
 `2T4QmC` is difference betwen the current timestamp in milliseconds and the starting epoch (by default Jan 1st, 2012). 
+
 `rM` is a variance on the single shard, managed with a sequence.
+
 `1a` is the total number of the nodes.
+
 `14` is the original shard where is the key.
+
 `03` is the key type. This is important if you need to clean you database for some reason.
 
 ## Usage
